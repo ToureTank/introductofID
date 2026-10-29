@@ -1,7 +1,7 @@
-`profile.jpg` shows Mount Hombori in Mali and is licensed under CC BY 2.0. Its author and source are credited in the page.
+`profile.jpg` はマリのホンボリ山の写真です。CC BY 2.0のライセンスで、作者名と出典はページ内に記載しています。
 
-`festival-segou.jpg` shows a procession during the Festival sur le Niger in Ségou and is licensed under CC BY-SA 4.0. Its author and source are credited in the page.
+`festival-segou.jpg` はセグーの「Festival sur le Niger」の行列の写真です。CC BY-SA 4.0のライセンスで、作者名と出典はページ内に記載しています。
 
-`mount-fuji.jpg` is the Mount Fuji background photo. It is CC0.
+`mount-fuji.jpg` は背景に使う富士山の写真です。CC0です。
 
-Keep the credits and license links if you reuse either image.
+写真を再利用する場合は、作者名、出典、ライセンス表記を残してください。

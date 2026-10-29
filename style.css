@@ -7,8 +7,33 @@
   --green-dark: #19382e;
   --lime: #d3dd9b;
   --line: #d9ddd4;
+  --story-bg: #e9eee4;
+  --story-copy: #46534a;
+  --belief-bg: #214638;
+  --belief-copy: #e0e8df;
+  --hero-overlay-strong: rgba(247, 246, 241, 0.94);
+  --hero-overlay-mid: rgba(247, 246, 241, 0.82);
+  --hero-overlay-soft: rgba(247, 246, 241, 0.18);
   --serif: Georgia, "Times New Roman", serif;
   --sans: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+}
+
+:root:has(#theme-toggle:checked) {
+  color-scheme: dark;
+  --ink: #e8eee8;
+  --muted: #b0bcb2;
+  --paper: #171e1a;
+  --green: #a4c7ad;
+  --green-dark: #e0e9e1;
+  --lime: #dce7a8;
+  --line: #3b473e;
+  --story-bg: #26332c;
+  --story-copy: #d0dad2;
+  --belief-bg: #19382e;
+  --belief-copy: #e0e8df;
+  --hero-overlay-strong: rgba(23, 30, 26, 0.95);
+  --hero-overlay-mid: rgba(23, 30, 26, 0.84);
+  --hero-overlay-soft: rgba(23, 30, 26, 0.34);
 }
 
 * {
@@ -52,6 +77,7 @@ a:focus-visible {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 18px;
   border-bottom: 1px solid var(--line);
 }
 
@@ -97,6 +123,132 @@ a:focus-visible {
 .site-header nav {
   display: flex;
   gap: 30px;
+  margin-left: auto;
+}
+
+.site-controls,
+.language-switch,
+.theme-switch {
+  display: flex;
+  align-items: center;
+}
+
+.site-controls {
+  gap: 16px;
+}
+
+.language-switch {
+  position: relative;
+  gap: 2px;
+  margin: 0;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+
+.language-switch input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.language-switch label {
+  padding: 3px 6px;
+  border-radius: 2px;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+.language-switch input:checked + label {
+  background: var(--green);
+  color: var(--paper);
+}
+
+.language-switch input:focus-visible + label {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+
+.theme-switch {
+  position: relative;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.theme-switch input {
+  appearance: none;
+  width: 34px;
+  height: 20px;
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper);
+  cursor: pointer;
+}
+
+.theme-switch input::before {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--muted);
+  content: "";
+  transition: transform 160ms ease;
+}
+
+.theme-switch input:checked {
+  background: var(--green);
+}
+
+.theme-switch input:checked::before {
+  background: var(--paper);
+  transform: translateX(14px);
+}
+
+.theme-switch input:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 3px;
+}
+
+.theme-icon {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.i18n {
+  display: none;
+}
+
+body:has(#language-ja:checked) .i18n-ja,
+body:has(#language-fr:checked) .i18n-fr,
+body:has(#language-en:checked) .i18n-en {
+  display: inline;
+}
+
+body:has(#language-ja:checked) img.i18n-ja,
+body:has(#language-fr:checked) img.i18n-fr,
+body:has(#language-en:checked) img.i18n-en {
+  display: block;
 }
 
 .site-header nav a,
@@ -120,7 +272,7 @@ a:focus-visible {
   align-items: center;
   column-gap: 9%;
   position: relative;
-  background-image: linear-gradient(90deg, rgba(247, 246, 241, 0.94) 0%, rgba(247, 246, 241, 0.82) 48%, rgba(247, 246, 241, 0.18) 100%), url("images/mount-fuji.jpg");
+  background-image: linear-gradient(90deg, var(--hero-overlay-strong) 0%, var(--hero-overlay-mid) 48%, var(--hero-overlay-soft) 100%), url("images/mount-fuji.jpg");
   background-size: cover;
   background-position: center 45%;
 }
@@ -214,7 +366,7 @@ h2 {
 
 .story-band {
   padding-block: 90px;
-  background: #e9eee4;
+  background: var(--story-bg);
 }
 
 .story-grid {
@@ -234,7 +386,7 @@ h2 {
 
 .story-copy {
   max-width: 550px;
-  color: #46534a;
+  color: var(--story-copy);
   font-size: 15px;
 }
 
@@ -271,14 +423,14 @@ h2 {
   font-size: 12px;
 }
 
-.mosque-figure figcaption span {
+.mosque-figure .figure-number {
   color: var(--green);
   font-weight: 700;
 }
 
 .belief-band {
   padding-block: 82px;
-  background: var(--green);
+  background: var(--belief-bg);
   color: #fff;
 }
 
@@ -299,7 +451,7 @@ h2 {
 .belief-content > p:last-child {
   max-width: 480px;
   margin: 0 auto;
-  color: #e0e8df;
+  color: var(--belief-copy);
   font-size: 14px;
 }
 
@@ -336,7 +488,24 @@ h2 {
   }
 
   .site-header {
-    min-height: 68px;
+    min-height: 0;
+    padding-block: 12px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+  }
+
+  .site-header nav {
+    grid-row: 2;
+    grid-column: 1 / -1;
+    justify-content: space-between;
+    margin-left: 0;
+  }
+
+  .site-controls {
+    grid-row: 3;
+    grid-column: 1 / -1;
+    justify-content: space-between;
   }
 
   .site-header nav {
@@ -352,7 +521,7 @@ h2 {
     padding-block: 54px 60px;
     grid-template-columns: 1fr;
     gap: 36px;
-    background-image: linear-gradient(180deg, rgba(247, 246, 241, 0.96) 0%, rgba(247, 246, 241, 0.88) 48%, rgba(247, 246, 241, 0.3) 100%), url("images/mount-fuji.jpg");
+    background-image: linear-gradient(180deg, var(--hero-overlay-strong) 0%, var(--hero-overlay-mid) 48%, var(--hero-overlay-soft) 100%), url("images/mount-fuji.jpg");
   }
 
   .hero h1 {
