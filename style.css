@@ -348,6 +348,10 @@ h2 {
   background: #dfe3d5;
 }
 
+.profile-figure img.i18n {
+  display: none;
+}
+
 .profile-figure figcaption {
   padding-top: 10px;
   color: var(--muted);
