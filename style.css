@@ -348,7 +348,8 @@ h2 {
   background: #dfe3d5;
 }
 
-.profile-figure img.i18n {
+.profile-figure img.i18n,
+.mosque-figure img.i18n {
   display: none;
 }
 
